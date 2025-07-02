@@ -1,0 +1,35 @@
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: nestjs_webzio_db
+      POSTGRES_USER: nestjs_webzio_user
+      POSTGRES_PASSWORD: nestjs_webzio_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: always
+
+  api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USERNAME: nestjs_webzio_user
+      DB_PASSWORD: nestjs_webzio_password
+      DB_NAME: nestjs_webzio_db
+    restart: always
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+volumes:
+  pgdata:
+    driver: local
