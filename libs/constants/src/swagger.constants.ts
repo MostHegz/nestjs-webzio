@@ -1,3 +1,3 @@
-export class SwaggerConstants{
+export class SwaggerConstants {
   static readonly API_TITLE = 'API Documentation';
 }
