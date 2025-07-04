@@ -1,0 +1,121 @@
+import { WebzioGetNewsQueryResponseDto } from '../../src/dtos';
+
+export function webzioGetNewsQueryResponseMock(): WebzioGetNewsQueryResponseDto {
+  return {
+    thread: {
+      uuid: 'd7ae0c12856b5817313038cff53fc9636a6b788c',
+      url: 'https://people.com/trump-calls-biden-son-of-b-alligator-alcatraz-tour-11765504',
+      site_full: 'people.com',
+      site: 'people.com',
+      site_section:
+        'https://news.google.com/search?q=a%20when%3A1h&hl=en-US&gl=US&ceid=US%3Aen',
+      site_categories: [
+        'society',
+        'media',
+        'television',
+        'entertainment',
+        'top_news_se',
+        'top_news_gb',
+        'top_news_il',
+        'top_news_dk',
+        'top_news_pk',
+        'top_news_kw',
+        'top_news_my',
+        'top_news_nz',
+        'top_news_au',
+        'top_news_sg',
+        'top_news_za',
+        'top_news_ph',
+        'top_news_rs',
+        'top_news_ca',
+        'top_news_nl',
+        'top_news_us',
+        'top_news_ie',
+        'top_news_pt',
+        'top_news',
+      ],
+      section_title: 'Google News - Search',
+      title: 'Trump Tours New ICE Detention Center, Criticizes Biden',
+      title_full: 'Trump Tours New ICE Detention Center, Criticizes Biden',
+      published: new Date('2025-07-02T22:01:00.000+03:00'),
+      replies_count: 0,
+      participants_count: 1,
+      site_type: 'news',
+      country: 'US',
+      main_image:
+        'https://people.com/thmb/XfJNVu_nVBKAin5pKwPpG4beIsM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(742x263:744x265)/donald-trump-joe-biden-070225-ff03794e0d264d25b4aac997b6c37c36.jpg',
+      performance_score: 10,
+      domain_rank: 687,
+      domain_rank_updated: new Date('2025-06-03T00:00:00.000+03:00'),
+      social: {
+        updated: new Date('2025-07-03T21:07:16.000+00:00'),
+        facebook: {
+          likes: 1209,
+          comments: 1138,
+          shares: 26,
+        },
+        vk: {
+          shares: 0,
+        },
+      },
+    },
+    uuid: 'd7ae0c12856b5817313038cff53fc9636a6b788c',
+    url: 'https://people.com/trump-calls-biden-son-of-b-alligator-alcatraz-tour-11765504',
+    ord_in_thread: 0,
+    parent_url: null,
+    author: 'Meredith Kile',
+    published: new Date('2025-07-02T22:01:00.000+03:00'),
+    title: 'Trump Tours New ICE Detention Center, Criticizes Biden',
+    text: 'Full text is unavailable in the news API lite version',
+    highlightText: '',
+    highlightTitle:
+      '<em>Trump</em> Tours New ICE Detention Center, Criticizes <em>Biden</em>... ',
+    highlightThreadTitle: '',
+    language: 'english',
+    sentiment: 'negative',
+    categories: ['Politics', 'Social Issue', 'Crime, Law and Justice'],
+    external_links: [
+      'https://www.commondreams.org/news/alligator-alcatraz',
+      'https://www.naplesnews.com/story/news/local/2025/07/01/trump-tours-alligator-alcatraz-on-opening-day/84429382007/',
+      'https://x.com/em_bee_kay?lang=en',
+      'https://www.facebook.com/groups/404018999364993/posts/631583166608574/',
+      'https://apnews.com/article/alligator-alcatraz-florida-everglades-protest-db34866aae64a3ff6880310403be40fd',
+      'https://commondreams.org/news/alligator-alcatraz',
+      'https://www.apnews.com/article/alligator-alcatraz-florida-everglades-protest-db34866aae64a3ff6880310403be40fd',
+      'https://x.com/em_bee_kay',
+      'https://www.x.com/em_bee_kay?lang=en',
+      'https://facebook.com/groups/404018999364993/posts/631583166608574/',
+      'https://www.facebook.com/groups/404018999364993/posts/631583166608574',
+      'https://naplesnews.com/story/news/local/2025/07/01/trump-tours-alligator-alcatraz-on-opening-day/84429382007/',
+      'https://www.naplesnews.com/story/news/local/2025/07/01/trump-tours-alligator-alcatraz-on-opening-day/84429382007',
+    ],
+    external_images: [],
+    entities: {
+      persons: [
+        {
+          name: 'Joe Biden',
+          sentiment: 'neutral',
+        },
+        {
+          name: 'Donald Trump',
+          sentiment: 'neutral',
+        },
+      ],
+      organizations: [
+        {
+          name: 'Trump Tours New ICE Detention Center',
+          sentiment: 'neutral',
+        },
+      ],
+      locations: [
+        {
+          name: 'Everglades',
+          sentiment: 'none',
+        },
+      ],
+    },
+    rating: null,
+    crawled: new Date('2025-07-02T23:13:50.649+03:00'),
+    updated: new Date('2025-07-03T21:07:16.000+00:00'),
+  };
+}
