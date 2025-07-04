@@ -24,12 +24,16 @@
     "revert-migrate": "npm run typeorm -- -d ./ormconfig.ts migration:revert"
   },
   "dependencies": {
+    "@nestjs/axios": "^4.0.0",
     "@nestjs/common": "^11.0.1",
     "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/swagger": "^11.2.0",
     "@nestjs/typeorm": "^11.0.0",
+    "axios": "^1.10.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2",
     "pg": "^8.16.3",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
@@ -85,7 +89,8 @@
     ],
     "moduleNameMapper": {
       "^@app/constants(|/.*)$": "<rootDir>/libs/constants/src/$1",
-      "^@app/entities(|/.*)$": "<rootDir>/libs/entities/src/$1"
+      "^@app/entities(|/.*)$": "<rootDir>/libs/entities/src/$1",
+      "^@app/webzio-client(|/.*)$": "<rootDir>/libs/webzio-client/src/$1"
     }
   }
 }

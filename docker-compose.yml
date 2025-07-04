@@ -25,6 +25,7 @@ services:
       DB_USERNAME: nestjs_webzio_user
       DB_PASSWORD: nestjs_webzio_password
       DB_NAME: nestjs_webzio_db
+      WEBZIO_API_KEY: your_webzio_api_key_here
     restart: always
     volumes:
       - .:/app

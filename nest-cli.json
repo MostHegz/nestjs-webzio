@@ -36,6 +36,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/nestjs-webzio/tsconfig.app.json"
       }
+    },
+    "webzio-client": {
+      "type": "library",
+      "root": "libs/webzio-client",
+      "entryFile": "index",
+      "sourceRoot": "libs/webzio-client/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/webzio-client/tsconfig.lib.json"
+      }
     }
   }
 }
