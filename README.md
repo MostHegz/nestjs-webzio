@@ -25,10 +25,37 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Project setup
+## Todo
+1. use better logger
+1. do more coverage with unit tests
+1. add authentication
 
+## Project setup
 ```bash
+# install node dependencies
 $ npm install
+
+# run database migrations
+$ npm run migrate
+```
+
+> [!IMPORTANT]  
+> You need to set the environment variables in a `.env` file in the root
+
+the `.env` file should contain 
+```
+PORT=3000
+BASE_URL=http://localhost
+
+## Database
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_USERNAME=your-db-username
+DB_PASSWORD=your-db-password
+DB_NAME=your-db-name
+
+## Webzio
+WEBZIO_API_KEY=your-webzio-api-key
 ```
 
 ## Compile and run the project
@@ -36,6 +63,9 @@ $ npm install
 ```bash
 # development
 $ npm run start
+
+# debug
+$ npm run start:debug
 
 # watch mode
 $ npm run start:dev
@@ -57,42 +87,11 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+## Local Docker Deployment
+> [!IMPORTANT]  
+> You need to set the api key in the `docker-compose.yml` file in the environment variable called `WEBZIO_API_KEY`
+To start the docker image of the app and the database
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+$ docker-compose up --build
 ```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
