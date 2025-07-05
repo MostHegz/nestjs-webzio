@@ -7,13 +7,11 @@ import {
 } from '@nestjs/common';
 import { Response } from 'express';
 import { ExceptionResponseDTO } from './dtos/exception.response.dto';
+import { CustomLogger } from '@app/logger';
 
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
-  // TODO: USE INJECTED LOGGER
-  private logger = new Logger(HttpExceptionFilter.name);
-
-  constructor() {}
+  constructor(private readonly logger: CustomLogger) {}
 
   catch(exception: HttpException, host: ArgumentsHost): void {
     const ctx = host.switchToHttp();

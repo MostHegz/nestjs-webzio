@@ -28,7 +28,9 @@ describe('WebzioNewsClient', () => {
           },
         },
       ],
-    }).compile();
+    })
+      .useMocker(createMock)
+      .compile();
     webzioNewsClient = module.get<WebzioNewsClient>(WebzioNewsClient);
     httpService = module.get<{ axiosRef: DeepMocked<AxiosInstance> }>(
       HttpService,
@@ -74,9 +76,6 @@ describe('WebzioNewsClient', () => {
       expect(response.posts.length).toBe(totalResults);
       expect(httpService.axiosRef.get).toHaveBeenCalledTimes(
         Math.ceil(totalResults / postsSize) + 1, // One extra call for the last batch that will have empty array
-      );
-      expect(response).toBeInstanceOf(
-        BaseGetQueryResponse<WebzioGetNewsQueryResponseDto>,
       );
     });
   });

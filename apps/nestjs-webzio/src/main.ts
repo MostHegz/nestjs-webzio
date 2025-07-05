@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
 import { AppModule } from './app.module';
-import { Logger, ValidationPipe } from '@nestjs/common';
+import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import {
   EnvironmentVariableConstants,
@@ -9,12 +9,14 @@ import {
   SwaggerConstants,
 } from '@app/constants';
 import 'reflect-metadata';
+import { CustomLogger } from '@app/logger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);
-  const logger = new Logger('Bootstrap');
 
+  const logger = await app.resolve(CustomLogger);
+  logger.setContext('Bootstrap');
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   const swaggerConfig = new DocumentBuilder()
     .setTitle(SwaggerConstants.API_TITLE)

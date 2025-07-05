@@ -13,6 +13,7 @@ import {
   TypeORMExceptionFilter,
   HttpExceptionFilter,
 } from './exception-filters';
+import { LoggerModule } from '@app/logger';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import {
     WebzioModule,
     MappersModule,
     RepositoriesModule,
+    LoggerModule,
   ],
   controllers: [],
   providers: [
