@@ -1,12 +1,12 @@
 import {
   CreateDateColumn,
   DeleteDateColumn,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 export class EntityBase {
-  @PrimaryColumn('uuid')
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @CreateDateColumn({ name: 'created_at' })

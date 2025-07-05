@@ -13,7 +13,7 @@ export class PostMapper {
     post.externalUuid = dto.uuid;
     post.url = dto.url;
     post.ordInThread = dto.ord_in_thread;
-    post.parentUrl = dto.parent_url;
+    post.parentUrl = dto.parent_url || undefined;
     post.author = dto.author;
     post.publishedAt = dto.published;
     post.title = dto.title;

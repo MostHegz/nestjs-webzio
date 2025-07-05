@@ -1,14 +1,11 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class InitializeDatabasePostEntity1751700185035
-  implements MigrationInterface
-{
-  name = 'InitializeDatabasePostEntity1751700185035';
+export class AddingTablesPostThread1751705338456 implements MigrationInterface {
+  name = 'AddingTablesPostThread1751705338456';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(
-      `CREATE TABLE "threads" (
-        "id" uuid NOT NULL,
+    await queryRunner.query(`CREATE TABLE "threads" (
+        "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
         "created_at" TIMESTAMP NOT NULL DEFAULT now(),
         "updated_at" TIMESTAMP NOT NULL DEFAULT now(),
         "deleted_at" TIMESTAMP,
@@ -30,11 +27,9 @@ export class InitializeDatabasePostEntity1751700185035
         "domain_rank" integer NOT NULL,
         "domain_rank_updated_at" TIMESTAMP WITH TIME ZONE NOT NULL,
         "social_data" jsonb,
-        CONSTRAINT "PK_d8a74804c34fc3900502cd27275" PRIMARY KEY ("id"))`,
-    );
-    await queryRunner.query(
-      `CREATE TABLE "posts" (
-        "id" uuid NOT NULL,
+        CONSTRAINT "PK_d8a74804c34fc3900502cd27275" PRIMARY KEY ("id"))`);
+    await queryRunner.query(`CREATE TABLE "posts" (
+        "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
         "created_at" TIMESTAMP NOT NULL DEFAULT now(),
         "updated_at" TIMESTAMP NOT NULL DEFAULT now(),
         "deleted_at" TIMESTAMP,
@@ -52,8 +47,7 @@ export class InitializeDatabasePostEntity1751700185035
         "language" character varying NOT NULL DEFAULT '',
         "thread_id" uuid,
         CONSTRAINT "REL_89efae744488da3393177c9ccb" UNIQUE ("thread_id"),
-        CONSTRAINT "PK_2829ac61eff60fcec60d7274b9e" PRIMARY KEY ("id"))`,
-    );
+        CONSTRAINT "PK_2829ac61eff60fcec60d7274b9e" PRIMARY KEY ("id"))`);
     await queryRunner.query(
       `ALTER TABLE "posts" ADD CONSTRAINT "FK_89efae744488da3393177c9ccbf" FOREIGN KEY ("thread_id") REFERENCES "threads"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`,
     );

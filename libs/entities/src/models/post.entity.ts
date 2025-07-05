@@ -15,7 +15,7 @@ export class PostEntity extends EntityBase {
   ordInThread: number;
 
   @Column({ name: 'parent_url', nullable: true })
-  parentUrl?: string | null;
+  parentUrl?: string;
 
   @Column({ name: 'author' })
   author: string;
