@@ -19,6 +19,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./apps/nestjs-webzio/test/jest-e2e.json",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "migrate": "npm run typeorm -- -d ./ormconfig.ts migration:run",
     "generate-migration": "npm run typeorm -- -d ./ormconfig.ts migration:generate ./migrations/%npm_config_name%",
     "generate-migration-mac": "npm run typeorm -- -d ./ormconfig.ts migration:generate ./migrations/$npm_config_name",
     "revert-migrate": "npm run typeorm -- -d ./ormconfig.ts migration:revert"
@@ -90,6 +91,8 @@
     "moduleNameMapper": {
       "^@app/constants(|/.*)$": "<rootDir>/libs/constants/src/$1",
       "^@app/entities(|/.*)$": "<rootDir>/libs/entities/src/$1",
+      "^@app/mappers(|/.*)$": "<rootDir>/libs/mappers/src/$1",
+      "^@app/repositories(|/.*)$": "<rootDir>/libs/repositories/src/$1",
       "^@app/webzio-client(|/.*)$": "<rootDir>/libs/webzio-client/src/$1"
     }
   }

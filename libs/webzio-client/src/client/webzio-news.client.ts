@@ -7,7 +7,6 @@ import {
   WebzioGetNewsQueryResponseDto,
 } from '../dtos';
 import { WebzioNewsSortBy, WebzioOrder } from '../enums';
-import { plainToInstance } from 'class-transformer';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
@@ -50,14 +49,10 @@ export class WebzioNewsClient {
       // TODO: this will always call the API at an extra time to get an empty array
     } while (nextQueryString && response.posts.length > 0);
 
-    const responseDTO = plainToInstance(
-      BaseGetQueryResponse<WebzioGetNewsQueryResponseDto>,
-      {
-        ...response,
-        posts: posts,
-      },
-    );
-    return responseDTO;
+    return {
+      ...response,
+      posts: posts,
+    };
   }
 
   async #get(

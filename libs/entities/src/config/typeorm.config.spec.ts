@@ -2,10 +2,17 @@ import { createMock } from '@golevelup/ts-jest';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { typeOrmConfigAsync } from './typeorm.config';
+import * as Models from '@app/entities/models';
 
 describe('TypeOrmConfig', () => {
   let configService: ConfigService;
-
+  const models: any[] = [];
+  for (const key in Models) {
+    if (Models.hasOwnProperty(key)) {
+      const model = Models[key];
+      models.push(model);
+    }
+  }
   const configuration = {
     DB_HOST: 'testHost',
     DB_PORT: 3452,
@@ -21,8 +28,8 @@ describe('TypeOrmConfig', () => {
     username: 'testUsername',
     password: 'testPassword',
     database: 'testDBName',
-    entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-    migrations: [__dirname + '/../migrations/*{.ts,.js}'],
+    entities: models,
+    migrations: [__dirname + '/../../migrations/*{.ts,.js}'],
     synchronize: false,
   };
 

@@ -4,9 +4,18 @@ import {
   TypeOrmModuleOptions,
 } from '@nestjs/typeorm';
 import { EnvironmentVariableConstants } from '@app/constants';
+import * as Models from '@app/entities/models';
 
 export default class TypeOrmConfig {
   static getTypeOrmConfig(configService: ConfigService): TypeOrmModuleOptions {
+    const models: any[] = [];
+    for (const key in Models) {
+      if (Models.hasOwnProperty(key)) {
+        const model = Models[key];
+        models.push(model);
+      }
+    }
+
     return {
       type: 'postgres',
       host: configService.getOrThrow(EnvironmentVariableConstants.DB_HOST),
@@ -18,8 +27,8 @@ export default class TypeOrmConfig {
         EnvironmentVariableConstants.DB_PASSWORD,
       ),
       database: configService.getOrThrow(EnvironmentVariableConstants.DB_NAME),
-      entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-      migrations: [__dirname + '/../migrations/*{.ts,.js}'],
+      entities: models,
+      migrations: [__dirname + '/../../migrations/*{.ts,.js}'],
       synchronize: false,
     };
   }
