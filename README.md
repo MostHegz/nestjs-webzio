@@ -41,6 +41,8 @@ To start the docker container
 $ docker-compose up --build
 ```
 
+## Swagger
+You can access the auto generated documentation for the api and examples for the request and dto schemas through `/swagger` endpoint
 
 ## Project setup
 ```bash
