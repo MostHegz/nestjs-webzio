@@ -7,6 +7,12 @@ import { WebzioClientModule } from '@app/webzio-client';
 import { WebzioModule } from './webzio/webzio.module';
 import { MappersModule } from '@app/mappers';
 import { RepositoriesModule } from '@app/repositories';
+import { APP_FILTER } from '@nestjs/core';
+import {
+  AxiosExceptionFilter,
+  TypeORMExceptionFilter,
+  HttpExceptionFilter,
+} from './exception-filters';
 
 @Module({
   imports: [
@@ -19,6 +25,19 @@ import { RepositoriesModule } from '@app/repositories';
     RepositoriesModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: APP_FILTER,
+      useClass: AxiosExceptionFilter,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: TypeORMExceptionFilter,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter,
+    },
+  ],
 })
 export class AppModule {}
