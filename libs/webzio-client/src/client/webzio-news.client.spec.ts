@@ -5,7 +5,6 @@ import { WebzioNewsClient } from './webzio-news.client';
 import { createMock, DeepMocked } from '@golevelup/ts-jest';
 import { AxiosInstance } from 'axios';
 import { baseGetQueryResponseMock } from '../../test/mocks/base-get-query.response.mock';
-import { BaseGetQueryResponse, WebzioGetNewsQueryResponseDto } from '../dtos';
 
 describe('WebzioNewsClient', () => {
   let webzioNewsClient: WebzioNewsClient;
