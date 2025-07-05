@@ -91,6 +91,7 @@
     "moduleNameMapper": {
       "^@app/constants(|/.*)$": "<rootDir>/libs/constants/src/$1",
       "^@app/entities(|/.*)$": "<rootDir>/libs/entities/src/$1",
+      "^@app/mappers(|/.*)$": "<rootDir>/libs/mappers/src/$1",
       "^@app/webzio-client(|/.*)$": "<rootDir>/libs/webzio-client/src/$1"
     }
   }

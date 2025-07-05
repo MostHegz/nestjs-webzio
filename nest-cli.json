@@ -28,6 +28,15 @@
         "tsConfigPath": "libs/entities/tsconfig.lib.json"
       }
     },
+    "mappers": {
+      "type": "library",
+      "root": "libs/mappers",
+      "entryFile": "index",
+      "sourceRoot": "libs/mappers/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/mappers/tsconfig.lib.json"
+      }
+    },
     "nestjs-webzio": {
       "type": "application",
       "root": "apps/nestjs-webzio",
