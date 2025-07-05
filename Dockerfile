@@ -8,5 +8,4 @@ RUN npm install
 COPY . .
 RUN npm run build nestjs-webzio
 EXPOSE 3000
-
-CMD ["node", "dist/apps/nestjs-webzio/main"]
+CMD ["npm","run", "start:prod"]
