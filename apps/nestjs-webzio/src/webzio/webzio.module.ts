@@ -6,6 +6,7 @@ import { WebzioClientModule } from '@app/webzio-client';
 import { ConfigModule } from '@nestjs/config';
 import { MappersModule } from '@app/mappers';
 import { RepositoriesModule } from '@app/repositories';
+import { LoggerModule } from '@app/logger';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { RepositoriesModule } from '@app/repositories';
     ConfigModule,
     MappersModule,
     RepositoriesModule,
+    LoggerModule,
   ],
   controllers: [WebzioController],
   providers: [WebzioService],

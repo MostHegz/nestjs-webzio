@@ -13,7 +13,7 @@ export class QueryFilterDTO {
 
   @ApiProperty({
     description: 'Value of the query filter, used to match against the key.',
-    example: 'Web Development',
+    example: 'Web Development Awesome',
     type: String,
   })
   @IsNotEmpty()

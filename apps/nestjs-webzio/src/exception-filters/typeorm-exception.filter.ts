@@ -8,13 +8,11 @@ import {
 import { Response } from 'express';
 import { ExceptionResponseDTO } from './dtos/exception.response.dto';
 import { TypeORMError } from 'typeorm';
+import { CustomLogger } from '@app/logger';
 
 @Catch(TypeORMError)
 export class TypeORMExceptionFilter implements ExceptionFilter {
-  // TODO: USE INJECTED LOGGER
-  private logger = new Logger(TypeORMExceptionFilter.name);
-
-  constructor() {}
+  constructor(private readonly logger: CustomLogger) {}
 
   catch(exception: TypeORMError, host: ArgumentsHost): void {
     const ctx = host.switchToHttp();

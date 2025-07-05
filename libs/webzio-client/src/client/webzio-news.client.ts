@@ -8,6 +8,7 @@ import {
 } from '../dtos';
 import { WebzioNewsSortBy, WebzioOrder } from '../enums';
 import { ConfigService } from '@nestjs/config';
+import { CustomLogger } from '@app/logger';
 
 @Injectable()
 export class WebzioNewsClient {
@@ -17,8 +18,10 @@ export class WebzioNewsClient {
   constructor(
     private readonly httpService: HttpService,
     private readonly configService: ConfigService,
+    private readonly logger: CustomLogger,
   ) {
     this.apiKey = this.configService.getOrThrow<string>('WEBZIO_API_KEY');
+    this.logger.setContext(WebzioNewsClient.name);
   }
 
   createBuilder(): WebzioNewsGetRequestBuilder {
@@ -30,6 +33,9 @@ export class WebzioNewsClient {
   async getAll(
     queryFilters: FilterQueryParamDTO[],
   ): Promise<BaseGetQueryResponse<WebzioGetNewsQueryResponseDto>> {
+    this.logger.log(
+      `Fetching news with filters: ${JSON.stringify(queryFilters)}`,
+    );
     const posts: WebzioGetNewsQueryResponseDto[] = [];
     let response: BaseGetQueryResponse<WebzioGetNewsQueryResponseDto>;
 
@@ -39,7 +45,12 @@ export class WebzioNewsClient {
     queryFilters.forEach((filter) => requestBuilder.addFilterQuery(filter));
     let nextQueryString = requestBuilder.build();
 
+    let iterationCount = 0;
     do {
+      iterationCount++;
+      this.logger.log(
+        `Fetching news, iteration: ${iterationCount}, query: ${nextQueryString}`,
+      );
       response = await this.#get(nextQueryString);
       posts.push(...response.posts);
       nextQueryString = response.next;
