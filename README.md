@@ -52,8 +52,8 @@ $ npm run migrate
 ```
 
 > [!IMPORTANT]  
-> You need to set the environment variables in a `.env` file in the root
-> You need to create database on your local machine and set DB_NAME to it
+> * You need to set the environment variables in a `.env` file in the root 
+> * You need to create database on your local machine and set DB_NAME to it
 
 the `.env` file should contain 
 ```
