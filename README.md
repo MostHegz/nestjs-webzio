@@ -30,6 +30,18 @@
 1. do more coverage with unit tests
 1. add authentication
 
+
+## Local Docker Deployment
+> [!IMPORTANT]  
+> You need to set the api key in the `docker-compose.yml` file in the environment variable called `WEBZIO_API_KEY`
+To start the docker image of the app and the database
+
+## Project setup
+```bash
+$ docker-compose up --build
+```
+
+
 ## Project setup
 ```bash
 # install node dependencies
@@ -41,6 +53,7 @@ $ npm run migrate
 
 > [!IMPORTANT]  
 > You need to set the environment variables in a `.env` file in the root
+> You need to create database on your local machine and set DB_NAME to it
 
 the `.env` file should contain 
 ```
@@ -85,13 +98,4 @@ $ npm run test:e2e
 
 # test coverage
 $ npm run test:cov
-```
-
-## Local Docker Deployment
-> [!IMPORTANT]  
-> You need to set the api key in the `docker-compose.yml` file in the environment variable called `WEBZIO_API_KEY`
-To start the docker image of the app and the database
-
-```bash
-$ docker-compose up --build
 ```
