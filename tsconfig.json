@@ -36,6 +36,12 @@
       "@app/mappers/*": [
         "libs/mappers/src/*"
       ],
+      "@app/repositories": [
+        "libs/repositories/src"
+      ],
+      "@app/repositories/*": [
+        "libs/repositories/src/*"
+      ],
       "@app/webzio-client": [
         "libs/webzio-client/src"
       ],
