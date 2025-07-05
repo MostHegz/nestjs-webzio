@@ -19,6 +19,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./apps/nestjs-webzio/test/jest-e2e.json",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "migrate": "npm run typeorm -- -d ./ormconfig.ts migration:run",
     "generate-migration": "npm run typeorm -- -d ./ormconfig.ts migration:generate ./migrations/%npm_config_name%",
     "generate-migration-mac": "npm run typeorm -- -d ./ormconfig.ts migration:generate ./migrations/$npm_config_name",
     "revert-migrate": "npm run typeorm -- -d ./ormconfig.ts migration:revert"
