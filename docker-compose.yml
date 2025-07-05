@@ -9,7 +9,11 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nestjs_webzio_user -d nestjs_webzio_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   api:
     build:
@@ -18,7 +22,8 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     environment:
       DB_HOST: postgres
       DB_PORT: 5432
@@ -26,10 +31,9 @@ services:
       DB_PASSWORD: nestjs_webzio_password
       DB_NAME: nestjs_webzio_db
       WEBZIO_API_KEY: your_webzio_api_key_here
-    restart: always
+    command: ["/bin/sh", "-c", "npm run migrate && npm run start:prod"] # Run migrations then start the app
     volumes:
       - .:/app
-      - /app/node_modules
 
 volumes:
   pgdata:
