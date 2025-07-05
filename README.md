@@ -34,9 +34,9 @@
 ## Local Docker Deployment
 > [!IMPORTANT]  
 > You need to set the api key in the `docker-compose.yml` file in the environment variable called `WEBZIO_API_KEY`
-To start the docker image of the app and the database
+To start the docker container
 
-## Project setup
+### Docker Project setup
 ```bash
 $ docker-compose up --build
 ```
